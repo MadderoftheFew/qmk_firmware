@@ -974,8 +974,9 @@ void render_dreambreaker(void) {
         }
 
         if (get_current_wpm() > IDLE_SPEED && get_current_wpm() < ANIM_WPM_LOWER) {
+            current_prep_frame = (current_prep_frame + 1) % PREP_FRAMES;
             oled_write_raw_P(prep[abs((PREP_FRAMES-1)-current_prep_frame)], ANIM_SIZE); // uncomment if PREP_FRAMES >1
-            oled_write_raw_P(prep[0], ANIM_SIZE);  // remove if IDLE_FRAMES >1
+            //oled_write_raw_P(prep[0], ANIM_SIZE);  // remove if IDLE_FRAMES >1
         }
 
         if (get_current_wpm() >= ANIM_WPM_LOWER) {
