@@ -21,11 +21,11 @@
 #define IDLE_SPEED 10  // below this wpm value your animation will idle
 #define PREP_FRAMES 10 // uncomment if >1
 #define TAP_FRAMES 14
-#define ANIM_WPM_LOWER 20  // above this wpm value typing animation to trigger
-#define ANIM_FRAME_DURATION_MAX 450 // longest animation duration in ms
-#define ANIM_FRAME_DURATION_MIN 100 // shortest animation duration in ms
+#define ANIM_WPM_LOWER 40  // above this wpm value typing animation to trigger
+#define ANIM_FRAME_DURATION_MAX 200 // longest animation duration in ms
+#define ANIM_FRAME_DURATION_MIN 30 // shortest animation duration in ms
 #define IDLE_FRAME_DURATION 300  // how long each frame lasts in ms
-#define ANIM_FRAME_RATIO 2.5 // how aggressively animation speeds up with wpm
+#define ANIM_FRAME_RATIO 2 // how aggressively animation speeds up with wpm
 // #define SLEEP_TIMER 60000 // should sleep after this period of 0 wpm, needs fixing
 #define ANIM_SIZE 512  // number of bytes in array, minimize for adequate firmware size, max is 1024
 
@@ -970,18 +970,18 @@ void render_dreambreaker(void) {
     void animation_phase(void) {
         if (get_current_wpm() <= IDLE_SPEED) {
             current_idle_frame = (current_idle_frame + 1) % IDLE_FRAMES;
-            oled_write_raw_P(idle[abs((IDLE_FRAMES - 1) - current_idle_frame)], ANIM_SIZE);
+            oled_write_raw_P(idle[current_idle_frame], ANIM_SIZE);
         }
 
         if (get_current_wpm() > IDLE_SPEED && get_current_wpm() < ANIM_WPM_LOWER) {
             current_prep_frame = (current_prep_frame + 1) % PREP_FRAMES;
-            oled_write_raw_P(prep[abs((PREP_FRAMES-1)-current_prep_frame)], ANIM_SIZE); // uncomment if PREP_FRAMES >1
-            //oled_write_raw_P(prep[0], ANIM_SIZE);  // remove if IDLE_FRAMES >1
+            oled_write_raw_P(prep[current_prep_frame], ANIM_SIZE); // uncomment if PREP_FRAMES >1
+            //oled_write_raw_P(prep[0], ANIM_SIZE);  // remove if PREP_FRAMES >1
         }
 
         if (get_current_wpm() >= ANIM_WPM_LOWER) {
             current_tap_frame = (current_tap_frame + 1) % TAP_FRAMES;
-            oled_write_raw_P(tap[abs((TAP_FRAMES - 1) - current_tap_frame)], ANIM_SIZE);
+            oled_write_raw_P(tap[current_tap_frame], ANIM_SIZE);
         }
     }
 
