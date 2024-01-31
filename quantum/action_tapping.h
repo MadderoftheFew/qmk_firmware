@@ -27,9 +27,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define QUICK_TAP_TERM TAPPING_TERM
 #endif
 
-/* tap count needed for toggling a feature */
+/* tap count needed for toggling a feature -- REDEFINED TO 2 BY MADDER, DEFAULT 5*/
 #ifndef TAPPING_TOGGLE
-#    define TAPPING_TOGGLE 5
+#    define TAPPING_TOGGLE 2
 #endif
 
 #define WAITING_BUFFER_SIZE 8
