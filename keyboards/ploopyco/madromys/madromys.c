@@ -132,6 +132,34 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
 #endif
     }
 
+    //CUSTOM BY MADDER
+
+    if (keycode == KC_F24) {
+        if (record->event.pressed) {
+            tap_code16(KC_HOME);
+            tap_code16(S(KC_END));
+        }
+    }
+
+    if (keycode == LT(0,KC_NO)) {
+        if (record->event.pressed && record->tap.count) {
+            tap_code16(KC_BTN3);
+        } else if (!record->tap.count){
+#ifndef PLOOPY_DRAGSCROLL_MOMENTARY
+        if (record->event.pressed)
+#endif
+        {
+            is_drag_scroll ^= 1;
+        }
+#ifdef PLOOPY_DRAGSCROLL_FIXED
+        pointing_device_set_cpi(is_drag_scroll ? PLOOPY_DRAGSCROLL_DPI : dpi_array[keyboard_config.dpi_config]);
+#else
+        pointing_device_set_cpi(is_drag_scroll ? (dpi_array[keyboard_config.dpi_config] * PLOOPY_DRAGSCROLL_MULTIPLIER) : dpi_array[keyboard_config.dpi_config]);
+#endif
+        }
+    }
+
+
     return true;
 }
 
