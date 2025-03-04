@@ -14,7 +14,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "q4.h"
+
+const matrix_row_t matrix_mask[] = {
+    0b11111111111111,
+    0b11111111111111,
+    0b11111111111111,
+    0b11111111111111,
+    0b11111111101111,
+};
 
 #ifdef DIP_SWITCH_ENABLE
 
@@ -33,7 +41,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_user(keycode, record)) { return false; }
     switch (keycode) {
 #ifdef RGB_MATRIX_ENABLE
-        case QK_RGB_MATRIX_TOGGLE:
+        case RGB_TOG:
             if (record->event.pressed) {
                 switch (rgb_matrix_get_flags()) {
                     case LED_FLAG_ALL: {

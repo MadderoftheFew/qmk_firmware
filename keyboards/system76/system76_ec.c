@@ -22,12 +22,6 @@
 #include "raw_hid.h"
 #include "rgb_matrix.h"
 #include "version.h"
-#include "keyboard.h"
-#include "eeprom.h"
-#include "matrix.h"
-#include "action_layer.h"
-#include "bootloader.h"
-#include "wait.h"
 
 enum Command {
     CMD_PROBE         = 1,   // Probe for System76 EC protocol
@@ -135,7 +129,7 @@ static enum rgb_matrix_effects mode_map[] = {
 
 _Static_assert(sizeof(mode_map) == MODE_LAST, "mode_map_length");
 
-rgb_t raw_rgb_data[RGB_MATRIX_LED_COUNT];
+RGB raw_rgb_data[RGB_MATRIX_LED_COUNT];
 
 // clang-format off
 rgb_config_t layer_rgb[DYNAMIC_KEYMAP_LAYER_COUNT] = {
@@ -322,7 +316,7 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
             if (!bootloader_unlocked) {
                 uint8_t index = data[2];
 
-                rgb_t rgb = {
+                RGB rgb = {
                     .r = data[3],
                     .g = data[4],
                     .b = data[5],

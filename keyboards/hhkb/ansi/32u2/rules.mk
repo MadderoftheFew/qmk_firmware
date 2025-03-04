@@ -1,4 +1,2 @@
-CUSTOM_MATRIX = yes
-
-# project specific files
-SRC = matrix.c
+CONSOLE_ENABLE = no   # Console for debug
+COMMAND_ENABLE = no   # Commands for debug and configuration

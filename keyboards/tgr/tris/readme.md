@@ -1,5 +1,7 @@
 # TGR Tris/Tris CE
 
+A short description of the keyboard/project
+
 * Keyboard Maintainer: [poisonking](https://github.com/halfenergized)
 * Hardware Supported: Tris PCB
 * Hardware Availability: https://geekhack.org/index.php?topic=86221.0
@@ -8,7 +10,7 @@ Make example for this keyboard (after setting up your build environment):
 
     make tris:default
 
-Flashing example for this keyboard:
+Flashing example for this keyboard ([after setting up the bootloadHID flashing environment](https://docs.qmk.fm/#/flashing_bootloadhid))
 
     make tris:default:flash
 

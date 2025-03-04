@@ -1,1 +1,1 @@
-RGB_MATRIX_CUSTOM_KB = yes
+# This file intentionally left blank

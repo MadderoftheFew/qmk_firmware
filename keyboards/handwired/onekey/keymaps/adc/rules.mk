@@ -1,1 +1,3 @@
-ANALOG_DRIVER_REQUIRED = yes
+SRC += analog.c
+
+CONSOLE_ENABLE = yes

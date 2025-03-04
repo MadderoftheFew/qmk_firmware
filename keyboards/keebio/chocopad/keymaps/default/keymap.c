@@ -1,6 +1,3 @@
-// Copyright 2023 Danny Nguyen (danny@keeb.io)
-// SPDX-License-Identifier: GPL-2.0-or-later
-
 #include QMK_KEYBOARD_H
 
 #define _BASE 0
@@ -22,8 +19,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_P0,    KC_P0,    KC_DOT
   ),
   [_FN2] = LAYOUT_ortho_4x4(
-    RM_TOGG,  RM_HUEU,  RM_SATU,  RM_VALU,
-    RM_NEXT,  RM_HUED,  RM_SATD,  RM_VALD,
+    RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,
+    RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,
     _______,  _______,  _______,  QK_BOOT,
     BL_STEP,  _______,  _______,  _______
   )
